@@ -1,9 +1,22 @@
+@font-face {
+  font-family: 'Futura';
+  src: url('/fonts/Futura/FuturaPT-Medium.ttf');
+}
+@font-face {
+  font-family: 'FuturaLight';
+  src: url('/fonts/Futura/FuturaPT-Light.ttf');
+}
+
 html,
 body {
-  padding: 0;
+  position: relative;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: Futura, sans-serif;
+  background: white;
+  min-height: 100vh !important;
+  max-height: 100vh;
+  display: flex;
+  flex-flow: column;
 }
 
 a {
@@ -14,3 +27,4 @@ a {
 * {
   box-sizing: border-box;
 }
+
