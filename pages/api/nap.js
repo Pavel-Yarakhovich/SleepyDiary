@@ -2,7 +2,7 @@ import { MongoClient } from "mongodb";
 
 export default async function handler(req, res) {
   const client = await MongoClient.connect(
-    "mongodb+srv://pavel:10j6lOmIAqoNYQtP@cluster0.79r78.mongodb.net/SleepDiary?retryWrites=true&w=majority"
+    `mongodb+srv://pavel:${process.env.NEXT_PUBLIC_MONGO_PSWD}@cluster0.79r78.mongodb.net/SleepDiary?retryWrites=true&w=majority`
   );
   const db = client.db();
   const napsCollection = db.collection("naps");
