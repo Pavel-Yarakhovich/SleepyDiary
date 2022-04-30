@@ -33,7 +33,7 @@ const FinishDaySleep = ({ nap, onNapFinished }) => {
     setProcessing(true);
 
     const finishNapTime = new Date();
-    finishNapTime.setHours(finishTime.hour, finishTime.minute);
+    finishNapTime.setHours(finishTime.hour ?? 0, finishTime.minute ?? 0);
     const finishNapTimestamp = finishNapTime.getTime();
 
     const params = {
@@ -56,7 +56,7 @@ const FinishDaySleep = ({ nap, onNapFinished }) => {
 
     const data = await response.json();
 
-    const updatedNap = { ...data };
+    const updatedNap = { ...nap, ...params };
 
     if (data) {
       // updatedNap._id = napId;

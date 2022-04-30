@@ -12,8 +12,7 @@ import {
 
 import { format } from "date-fns";
 
-const Day = ({ day, naps }) => {
-  console.log("NAPS ", naps);
+const Day = ({ day, naps, onNapCreated, onNapFinished }) => {
   return (
     <Flex flexDirection={"column"} w="100%" p="16px" overflow={"auto"}>
       {day ? (
@@ -42,12 +41,7 @@ const Day = ({ day, naps }) => {
                         </Text>
                       </>
                     ) : (
-                      <FinishDaySleep
-                        nap={nap}
-                        onNapFinished={(nap) => {
-                          console.log("FINISHED NAP ", nap);
-                        }}
-                      />
+                      <FinishDaySleep nap={nap} onNapFinished={onNapFinished} />
                     )}
                   </Flex>
                   <Flex alignItems={"center"}>
@@ -67,15 +61,12 @@ const Day = ({ day, naps }) => {
               ))}
             </Flex>
           )}
-          <StartDaySleep
-            dayId={day._id}
-            onNapCreated={(nap) => {
-              console.log("NAP ", nap);
-            }}
-          />
+          <StartDaySleep dayId={day._id} onNapCreated={onNapCreated} />
         </>
       ) : (
-        <Box>Выберите день</Box>
+        <Box m="auto" color="#87035d" fontSize="36px" textTransform="uppercase">
+          Выберите день
+        </Box>
       )}
     </Flex>
   );

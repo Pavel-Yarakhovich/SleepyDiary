@@ -76,13 +76,11 @@ const CreateDayDrawer = ({ onDayCreated, isOpen, onOpen, onClose }) => {
         ref={btnRef}
         colorScheme="yellow"
         onClick={onOpen}
-        width={150}
-        height={150}
-        borderRadius="50%"
-        position="fixed"
-        top={15}
-        right={15}
-        fontSize={30}
+        height="60px"
+        borderRadius="12px"
+        fontSize={24}
+        fontWeight="400"
+        m={4}
       >
         Новый день
       </Button>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import {
   Text,
@@ -30,11 +30,13 @@ const StartDaySleep = ({ dayId, onNapCreated }) => {
   const [fellAsleep, setFellAsleep] = useState("");
   const [processing, setProcessing] = useState(false);
 
+  useEffect(() => {}, [startTime]);
+
   const createNap = async () => {
     setProcessing(true);
 
     const startNap = new Date();
-    startNap.setHours(startTime.hour, startTime.minute);
+    startNap.setHours(startTime.hour ?? 0, startTime.minute ?? 0);
     const startNapTimestamp = startNap.getTime();
 
     const newNap = {
@@ -55,7 +57,7 @@ const StartDaySleep = ({ dayId, onNapCreated }) => {
     const data = await response.json();
 
     const createdNap = { ...newNap };
-
+    console.log("createdNap ", createdNap);
     if (data) {
       createdNap._id = data.insertedId;
     } else {
