@@ -1,6 +1,10 @@
 .container {
   width: 100%;
+  height: 100vh;
   flex-grow: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .main {
@@ -11,15 +15,20 @@
   height: calc(100% - 140px);
 }
 
-.main::before {
+/* .main::before,
+.main::after {
   position: absolute;
   z-index: 3;
   display: block;
   content: '';
-  height: 8px;
-  width: 85%;
+  height: 1px;
+  width: 100%;
   left: 0;
-  top: -4px;
+  top: -1px;
   border-radius: 0 4px 4px 0;
   background-image: linear-gradient(rgba(227, 36, 141, 0.4), rgb(145, 6, 83));
 }
+
+.main::after {
+  top: 100%;
+} */

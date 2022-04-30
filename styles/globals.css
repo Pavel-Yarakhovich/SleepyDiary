@@ -9,7 +9,11 @@
 
 html,
 body {
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
   margin: 0;
   font-family: Futura, sans-serif;
   background: white;
@@ -26,5 +30,23 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+header {
+  height: 70px;
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(255,195,241,1);
+}
+
+footer {
+  margin-top: auto;
+  padding: 5px;
+  position: relative;
+  height: 70px;
+  padding: 5px 10px;
+  background-color: white;
 }
 
