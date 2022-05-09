@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { Heading, Flex } from "@chakra-ui/react";
 import { Link } from 'components/Link';
 import { Navigation } from 'components/Navigation';
-import { UserMenu } from 'components/userMenu';
+import { UserMenu } from 'components/UserMenu';
 import { userService } from 'services';
 
 export { Nav };
