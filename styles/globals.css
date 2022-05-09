@@ -9,16 +9,14 @@
 
 html,
 body {
-  position: fixed;
+  position: fixed !important;
   top: 0;
   left: 0;
   right: 0;
   height: 100%;
+  max-height: 100%;
   margin: 0;
-  font-family: Futura, sans-serif;
   background: white;
-  min-height: 100vh !important;
-  max-height: 100vh;
   display: flex;
   flex-flow: column;
 }
@@ -38,7 +36,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: rgba(255,195,241,1);
+  background-color: #fbebff;
 }
 
 footer {

@@ -1,3 +1,10 @@
+import Head from "next/head";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
+
+import { userService } from "services";
+import { Nav } from "components/Nav";
+
 import { ChakraProvider } from "@chakra-ui/react";
 import "../styles/globals.css";
 
@@ -60,16 +67,53 @@ Chart.register(
 );
 
 import { AppStateProvider } from "../components/appStore";
+// import App from 'next/app';
 
-function MyApp({ Component, pageProps }) {
+export default App;
+
+function App({ Component, pageProps }) {
+  const router = useRouter();
+  const [authorized, setAuthorized] = useState(false);
+
+  useEffect(() => {
+    // run auth check on initial load
+    authCheck(router.asPath);
+
+    // set authorized to false to hide page content while changing routes
+    const hideContent = () => setAuthorized(false);
+    router.events.on("routeChangeStart", hideContent);
+
+    // run auth check on route change
+    router.events.on("routeChangeComplete", authCheck);
+
+    return () => {
+      router.events.off("routeChangeStart", hideContent);
+      router.events.off("routeChangeComplete", authCheck);
+    };
+  }, []);
+
+  function authCheck(url) {
+    // redirect to login page if accessing a private page and not logged in
+    const publicPaths = ["/login"];
+    const path = url.split("?")[0];
+    if (!userService.userValue && !publicPaths.includes(path)) {
+      setAuthorized(false);
+      router.push({
+        pathname: "/login",
+        query: { returnUrl: router.asPath },
+      });
+    } else {
+      setAuthorized(true);
+    }
+  }
+
   return (
     <ChakraProvider theme={theme}>
       <Fonts />
       <AppStateProvider>
-        <Component {...pageProps} />
+        <Nav />
+        {authorized && <Component {...pageProps} />}
       </AppStateProvider>
     </ChakraProvider>
   );
 }
-
-export default MyApp;
