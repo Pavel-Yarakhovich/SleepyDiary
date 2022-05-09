@@ -9,3 +9,8 @@
   background: url('/images/Sofa_Julia.jpg') no-repeat center;
   background-size: cover;
 }
+
+.ads {
+  background: url('/images/SleepingBaby.jpg') no-repeat center;
+  background-size: contain;
+}

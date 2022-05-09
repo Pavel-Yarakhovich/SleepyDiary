@@ -12,6 +12,12 @@ import {
 
 import { format } from "date-fns";
 
+const mapCommentToIcon = {
+  ritual: <MdAssignmentTurnedIn />,
+  startComment: <MdToggleOff />,
+  endComment: <MdToggleOn />,
+};
+
 const Day = ({ day, naps, onNapCreated, onNapFinished }) => {
   return (
     <Flex flexDirection={"column"} w="100%" p="16px" overflow={"auto"}>
@@ -19,14 +25,14 @@ const Day = ({ day, naps, onNapCreated, onNapFinished }) => {
         <>
           <Heading>{format(Number(day.date), "PPPP")}</Heading>
           <Text fontSize="xl">
-            Сегодня мы проснулись в {format(Number(day.wakeUpTime), "p")}
+            We woke up at {format(Number(day.wakeUpTime), "p")} today
           </Text>
           <Divider orientation="horizontal" my="16px" />
           {naps.length === 0 ? (
-            <Text fontSize="xl">Днем я еще не спала</Text>
+            <Text fontSize="xl">I haven&apos;t slept yet, mommy</Text>
           ) : (
             <Flex flexDirection={"column"}>
-              <Text fontSize="xl">Мои дневные сны</Text>
+              <Text fontSize="xl">My naps</Text>
               {naps.map((nap) => (
                 <Flex key={nap._id} flexDirection="column">
                   <Flex alignItems={"center"}>
@@ -44,18 +50,12 @@ const Day = ({ day, naps, onNapCreated, onNapFinished }) => {
                       <FinishDaySleep nap={nap} onNapFinished={onNapFinished} />
                     )}
                   </Flex>
-                  <Flex alignItems={"center"}>
-                    <MdAssignmentTurnedIn />
-                    <Text ml="8px">{nap.ritual || "Не указан"}</Text>
-                  </Flex>
-                  <Flex alignItems={"center"}>
-                    <MdToggleOff />
-                    <Text ml="8px">{nap.startComment || "Не указан"}</Text>
-                  </Flex>
-                  <Flex alignItems={"center"}>
-                    <MdToggleOn />
-                    <Text ml="8px">{nap.endComment || "Не указан"}</Text>
-                  </Flex>
+                  {["ritual", "startComment", "endComment"].map((x) => (
+                    <Flex key={x} alignItems={"center"}>
+                      {mapCommentToIcon[x]}
+                      <Text ml="8px">{nap[x] || "No data"}</Text>
+                    </Flex>
+                  ))}
                   <Divider orientation="horizontal" mb="12px" />
                 </Flex>
               ))}
@@ -65,7 +65,7 @@ const Day = ({ day, naps, onNapCreated, onNapFinished }) => {
         </>
       ) : (
         <Box m="auto" color="#87035d" fontSize="36px" textTransform="uppercase">
-          Выберите день
+          Select a Day
         </Box>
       )}
     </Flex>
