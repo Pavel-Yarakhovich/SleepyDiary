@@ -63,8 +63,7 @@ const CreateDayDrawer = ({ onDayCreated, isOpen, onOpen, onClose }) => {
     if (data) {
       newDay._id = data.insertedId;
     } else {
-      newDay.error =
-        "Не удалось создать новый день! Нужно попробовать еще разок.";
+      newDay.error = "Could not create a new day! Let's try again";
     }
 
     onDayCreated(newDay);
@@ -82,7 +81,7 @@ const CreateDayDrawer = ({ onDayCreated, isOpen, onOpen, onClose }) => {
         fontWeight="400"
         m={4}
       >
-        Новый день
+        New Day
       </Button>
       <Drawer
         size="sm"

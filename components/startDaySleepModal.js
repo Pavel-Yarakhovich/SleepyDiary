@@ -72,12 +72,12 @@ const StartDaySleep = ({ dayId, onNapCreated }) => {
   return (
     <>
       <Button mt={4} onClick={onOpen} colorScheme="yellow">
-        Добавить дневной сон
+        Add a Nap
       </Button>
       <Modal isOpen={isOpen} onClose={onClose} isCentered size="xl">
         <ModalOverlay bg="none" backdropFilter="auto" backdropBlur="3px" />
         <ModalContent>
-          <ModalHeader fontSize={26}>Ура! Я, кажется, уснула</ModalHeader>
+          <ModalHeader fontSize={26}>Hurray! I seem to hit the hay</ModalHeader>
           <ModalCloseButton />
           <ModalBody position="relative">
             {processing && (
@@ -101,7 +101,7 @@ const StartDaySleep = ({ dayId, onNapCreated }) => {
                 />
               </Flex>
             )}
-            <Text mb="8px">Время начала сна</Text>
+            <Text mb="8px">Nap start time</Text>
             <HStack>
               <NumberInput
                 onChange={(str, number) =>
@@ -118,7 +118,7 @@ const StartDaySleep = ({ dayId, onNapCreated }) => {
                 </NumberInputStepper>
               </NumberInput>
               <Text ml="8px" mr="15px">
-                часов
+                hours
               </Text>
               <NumberInput
                 onChange={(str, number) =>
@@ -134,30 +134,30 @@ const StartDaySleep = ({ dayId, onNapCreated }) => {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
-              <Text ml="8px">минут</Text>
+              <Text ml="8px">minutes</Text>
             </HStack>
             <Divider orientation="horizontal" my="16px" />
             <Textarea
               value={ritual}
               onChange={({ target }) => setRitual(target.value)}
-              placeholder="Ритуал"
+              placeholder="Ritual"
               size="md"
             />
             <Divider orientation="horizontal" my="16px" />
             <Textarea
               value={fellAsleep}
               onChange={({ target }) => setFellAsleep(target.value)}
-              placeholder="Как карапуз засыпал"
+              placeholder="How did the little one fall asleep"
               size="md"
             />
           </ModalBody>
 
           <ModalFooter>
             <Button variant="ghost" mr={3} onClick={onClose}>
-              Закрыть
+              Close
             </Button>
             <Button colorScheme="yellow" onClick={createNap}>
-              Начать сон
+              Start the Nap
             </Button>
           </ModalFooter>
         </ModalContent>

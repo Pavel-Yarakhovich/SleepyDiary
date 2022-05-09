@@ -9,7 +9,7 @@ const nextConfig = {
     apiUrl:
       process.env.NODE_ENV === "development"
         ? "http://localhost:3000/api" // dev api
-        : "http://localhost:3000/api", // prod api
+        : "https://sleepy-diary.vercel.app//api", // prod api
   },
 };
 

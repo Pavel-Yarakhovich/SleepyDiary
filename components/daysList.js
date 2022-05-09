@@ -27,7 +27,7 @@ const DaysList = ({ days = [], chosenDay, setChosenDay, dispatch }) => {
       mt={1}
       backgroundImage="linear-gradient(#fbebff 0%, rgba(116,9,121,0) 50%, rgba(255,255,255,1) 100%);"
     >
-      <Heading>Как мы спим</Heading>
+      <Heading>Tracked days</Heading>
       <CreateDayDrawer
         onDayCreated={onDayCreated}
         isOpen={isOpen}

@@ -31,12 +31,14 @@ function LoginPage() {
         bg="linear-gradient(to top, white 70%, #e5fdff)"
       >
         <GridItem>
+          <Flex flexDirection={'column'} justifyContent="center">
           <Heading as="h1" size="2xl" textAlign={"center"}>
             Sleepy Diary
           </Heading>
           <Heading as="h3" size="lg" textAlign={"center"}>
             Track baby&apos;s sleeps to grow healthier
           </Heading>
+          </Flex>
         </GridItem>
         <GridItem rowSpan={3}>
           <Flex h="100%" direction={"column"} justifyContent={"center"}>
@@ -44,15 +46,8 @@ function LoginPage() {
           </Flex>
         </GridItem>
 
-        <GridItem rowSpan={2} p={4}>
-          <Image
-            src={`/images/SleepingBaby.jpg`}
-            alt=""
-            h="100%"
-            w="100%"
-            objectFit="contain"
-            objectPosition="bottom"
-          />
+        <GridItem rowSpan={2} p={4} className={styles.ads}>
+          {/* ADS */}
         </GridItem>
       </Grid>
     </div>
