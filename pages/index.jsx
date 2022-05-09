@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 
-import { Image, Flex, Spinner, Text } from "@chakra-ui/react";
+import { Flex, Spinner, Text } from "@chakra-ui/react";
 import Layout from "../components/layout";
 
 // Helpers
@@ -57,14 +57,6 @@ export default function Home() {
       </Head>
       <Layout>
         <main className={styles.main}>
-          <Image
-            src={`/images/Sofa_Julia.jpg`}
-            alt=""
-            h="100%"
-            w="100%"
-            objectFit="cover"
-            objectPosition="center"
-          />
           <Flex
             position="absolute"
             flexFlow="column"
@@ -72,7 +64,7 @@ export default function Home() {
             left="0px"
             right="0px"
             h="100%"
-            bg="rgba(255,255,255,0.4)"
+            bg="rgba(255,255,255,0.7)"
             alignItems="center"
             justifyContent="center"
           >

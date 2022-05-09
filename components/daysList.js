@@ -24,7 +24,8 @@ const DaysList = ({ days = [], chosenDay, setChosenDay, dispatch }) => {
     <VStack
       flex="30% 0 0"
       p="16px"
-      backgroundImage="linear-gradient(rgba(255,195,241,1) 0%, rgba(116,9,121,0) 50%, rgba(255,255,255,1) 100%);"
+      mt={1}
+      backgroundImage="linear-gradient(#fbebff 0%, rgba(116,9,121,0) 50%, rgba(255,255,255,1) 100%);"
     >
       <Heading>Как мы спим</Heading>
       <CreateDayDrawer
