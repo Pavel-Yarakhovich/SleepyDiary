@@ -4,6 +4,8 @@ import { Radar } from "react-chartjs-2";
 // Helpers
 import format from "date-fns/format";
 
+export { SleepPerWeekDayRadar };
+
 const labels = [
   "Monday",
   "Tuesday",
@@ -16,7 +18,7 @@ const labels = [
 
 const convertMsToHrs = (ms) => +(ms / 1000 / 60 / 60).toFixed(2);
 
-const SleepPerWeekDayRadar = ({ naps }) => {
+function SleepPerWeekDayRadar({ naps }) {
   const [datasets, setDatasets] = useState([]);
   const [calculated, setCalculated] = useState(false);
   const [calculating, setCalculating] = useState(false);
@@ -43,7 +45,7 @@ const SleepPerWeekDayRadar = ({ naps }) => {
         data: napsDurations,
         backgroundColor: "rgba(255,195,241,0.7)",
         borderColor: "rgba(255,195,241,1)",
-        borderWidth: 1,
+        borderWidth: 2,
       },
     ]);
     setCalculated(true);
@@ -58,6 +60,4 @@ const SleepPerWeekDayRadar = ({ naps }) => {
       }}
     />
   );
-};
-
-export default SleepPerWeekDayRadar;
+}

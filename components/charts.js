@@ -2,7 +2,7 @@ import { useState } from "react";
 
 // Components
 import { Box, Flex, Heading, VStack } from "@chakra-ui/react";
-import SleepPerWeekDayRadar from "./charts/sleepPerWeekDay";
+import { SleepPerWeekDayRadar } from "./charts/sleepPerWeekDay";
 
 const mapKeyToChart = {
   sleepPerWeekDay: (props) => <SleepPerWeekDayRadar {...props} />,
@@ -45,7 +45,7 @@ const Charts = ({ appState }) => {
               fontSize={20}
               fontWeight="400"
               m="4px"
-              bg="#e8eaed"
+              bg="white"
               borderRadius="4px"
               cursor="pointer"
             >
@@ -54,7 +54,12 @@ const Charts = ({ appState }) => {
           ))}
         </Flex>
       </VStack>
-      <Flex flex="70% 0 0">
+      <Flex
+        flex="70% 0 0"
+        bg="rgba(255,255,255,0.9)"
+        m="4px 0 0 4px"
+        boxSizing="border-box"
+      >
         <Box m="auto" width={400} height={400}>
           {chosenChart && chosenChart}
         </Box>

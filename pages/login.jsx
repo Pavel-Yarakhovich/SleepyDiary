@@ -31,11 +31,11 @@ function LoginPage() {
         bg="linear-gradient(to top, white 70%, #e5fdff)"
       >
         <GridItem>
-          <Flex flexDirection={'column'} justifyContent="center">
-          <Heading as="h1" size="2xl" textAlign={"center"}>
+          <Flex flexDirection={'column'} justifyContent="center" h="100%" transform="rotate(-3deg)">
+          <Heading as="h1" size="2xl" textAlign={"center"} mb={2}>
             Sleepy Diary
           </Heading>
-          <Heading as="h3" size="lg" textAlign={"center"}>
+          <Heading as="h3" size="lg" textAlign={"center"} transform="rotate(1deg)">
             Track baby&apos;s sleeps to grow healthier
           </Heading>
           </Flex>

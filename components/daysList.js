@@ -47,16 +47,12 @@ const DaysList = ({ days = [], chosenDay, setChosenDay, dispatch }) => {
             onClick={() => setChosenDay(day)}
             justifyContent="center"
             alignItems="center"
-            color="white"
+            color={chosenDay?._id === day._id ? "white" : "rgb(26, 32, 44)"}
             p={3}
             fontSize={22}
             fontWeight="400"
             m="4px"
-            bg={
-              chosenDay?._id === day._id
-                ? "linear-gradient(to left, #355c7d, #6c5b7b, #c06c84)"
-                : "linear-gradient(to right, #355c7d, #6c5b7b, #c06c84)"
-            }
+            bg={chosenDay?._id === day._id ? "purple" : "white"}
             cursor="pointer"
           >
             {format(Number(day.date), "PPPP")}

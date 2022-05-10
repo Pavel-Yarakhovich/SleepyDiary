@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import { userService } from 'services';
+import { userService } from "services";
 
 import {
   FormControl,
@@ -9,21 +9,22 @@ import {
   Input,
   Button,
   Heading,
+  Text,
 } from "@chakra-ui/react";
+import { MdError } from "react-icons/md";
 
 export { Login };
 
 const fields = [
   { name: "name", placeholder: "Name" },
-  { name: "email", placeholder: "Email" }
+  { name: "email", placeholder: "Email" },
 ];
-
-const contentType = "application/json";
 
 const Login = () => {
   const [userData, setUserData] = useState({});
   const [formFilled, setFormFilled] = useState(false);
   const [error, setError] = useState("");
+  const [processing, setProcessing] = useState(false);
 
   const router = useRouter();
 
@@ -35,12 +36,17 @@ const Login = () => {
   }, [userData]);
 
   function onSubmit({ username, email }) {
-    return userService.login(username, email)
+    setProcessing(true);
+    return userService
+      .login(username, email)
       .then(() => {
-        const returnUrl = router.query.returnUrl || '/';
+        setProcessing(false);
+        const returnUrl = router.query.returnUrl || "/";
         router.push(returnUrl);
       })
-      .catch(error => {
+      .catch((error) => {
+        console.log("err ", error);
+        setProcessing(false);
         setError(error);
       });
   }
@@ -63,16 +69,31 @@ const Login = () => {
             id={field.name}
             placeholder={field.placeholder}
             value={userData[field.name] ?? ""}
-            onChange={({ target }) =>
+            onChange={({ target }) => {
+              setError("");
               setUserData((prev) => ({
                 ...prev,
                 [field.name]: target.value,
-              }))
-            }
+              }));
+            }}
           />
         </FormControl>
       ))}
-      <Button disabled={!formFilled} onClick={() => onSubmit({ username: userData.name, email: userData.email })}>
+      {error && (
+        <Flex m="5px auto" alignItems="center">
+          <MdError color="red" />
+          <Text ml={2} color="red">
+            {error}
+          </Text>
+        </Flex>
+      )}
+      <Button
+        isLoading={processing}
+        disabled={!formFilled}
+        onClick={() =>
+          onSubmit({ username: userData.name, email: userData.email })
+        }
+      >
         Log in
       </Button>
     </Flex>
