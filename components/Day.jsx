@@ -12,13 +12,15 @@ import {
 
 import { format } from "date-fns";
 
+export { Day };
+
 const mapCommentToIcon = {
   ritual: <MdAssignmentTurnedIn />,
   startComment: <MdToggleOff />,
   endComment: <MdToggleOn />,
 };
 
-const Day = ({ day, naps, onNapCreated, onNapFinished }) => {
+function Day({ day, naps, onNapCreated, onNapFinished }) {
   return (
     <Flex flexDirection={"column"} w="100%" p="16px" overflow={"auto"}>
       {day ? (
@@ -28,6 +30,7 @@ const Day = ({ day, naps, onNapCreated, onNapFinished }) => {
             We woke up at {format(Number(day.wakeUpTime), "p")} today
           </Text>
           <Divider orientation="horizontal" my="16px" />
+
           {naps.length === 0 ? (
             <Text fontSize="xl">I haven&apos;t slept yet, mommy</Text>
           ) : (
@@ -70,6 +73,4 @@ const Day = ({ day, naps, onNapCreated, onNapFinished }) => {
       )}
     </Flex>
   );
-};
-
-export default Day;
+}
