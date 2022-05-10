@@ -2,7 +2,7 @@ import { useState } from "react";
 
 // Components
 import { Box, Flex, Heading, VStack } from "@chakra-ui/react";
-import { SleepPerWeekDayRadar } from "./charts/sleepPerWeekDay";
+import { SleepPerWeekDayRadar } from "components/charts/SleepPerWeekDayRadar";
 
 const mapKeyToChart = {
   sleepPerWeekDay: (props) => <SleepPerWeekDayRadar {...props} />,

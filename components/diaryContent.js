@@ -2,7 +2,7 @@ import { useState } from "react";
 
 // Components
 import { Flex, Image } from "@chakra-ui/react";
-import { Day } from "Components/day";
+import { Day } from "Components/Day";
 import DaysList from "./daysList";
 
 const DiaryContent = ({ dispatch, state }) => {
